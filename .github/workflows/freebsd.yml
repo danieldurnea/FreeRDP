@@ -5,6 +5,20 @@ on:
   schedule:
     - cron: '30 5 * * SAT'
 
+name: ngrok-ssh
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tmshkr/ngrok-ssh@latest
+        with:
+          NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+          NGROK_CONFIG_FILE: "ngrok.yml"
+      - run: npm start
 jobs:
   freebsd_job:
     runs-on: ubuntu-latest
