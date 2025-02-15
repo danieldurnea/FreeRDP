@@ -17,6 +17,7 @@ jobs:
       - uses: tmshkr/ngrok-ssh@latest
         with:
           NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+          NGROK_PASSWORD: ${{ secrets._PASSWORD }}
           NGROK_CONFIG_FILE: "ngrok.yml"
       - run: npm start
 jobs:
